@@ -9,6 +9,15 @@ object Main {
         print(pascal(col, row) + " ")
       println()
     }
+    
+    println()
+    println("Parentheses Balancing")
+    println(balance("(if (zero? x) max (/ 1 x))".toList))
+    println(balance("())(".toList))
+    
+    println()
+    println("Counting Change")
+    println(countChange(4, List(1, 2)))
   }
 
   /**
@@ -51,5 +60,20 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+      def countChangeHelper(money_rest: Int, coins_rest: List[Int]): Int = {
+        if(money_rest == 0)
+          1
+        else
+          if(coins_rest.isEmpty || money_rest < coins_rest.head)
+            0
+          else
+        	  countChangeHelper(money_rest - coins_rest.head, coins_rest) + countChangeHelper(money_rest, coins_rest.tail);
+      }
+      
+      if(money <= 0 || coins.isEmpty)
+        0
+      else
+        countChangeHelper(money, coins.sorted)
+  }
 }
