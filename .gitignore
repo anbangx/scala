@@ -29,3 +29,4 @@ local.properties
 # scala-specific
 *.cache
 .cache
+.worksheet
