@@ -65,15 +65,48 @@ object basics {
 	// Values
 	val two = 1 + 1                           //> two  : Int = 2
 	
+	// Variables
+	var name = "steve"                        //> name  : String = steve
+	name = "marius"
+	
+	// Functions
+	def addOne(m: Int): Int = m + 1           //> addOne: (m: Int)Int
+	val threef = addOne(2)                    //> threef  : Int = 3
+	
+	def three() = 1 + 2                       //> three: ()Int
+	three()                                   //> res1: Int = 3
+	three                                     //> res2: Int = 3
+	
+	// Anonymous Functions
+	val addFour = (x: Int) => x + 4           //> addFour  : Int => Int = <function1>
+	addFour(1)                                //> res3: Int = 5
+	
+	def timesTwo2(i: Int): Int = {
+	  println("hello world")
+	  i * 2
+	}                                         //> timesTwo2: (i: Int)Int
+	timesTwo2(10)                             //> hello world
+                                                  //| res4: Int = 20
+	// Partial application
+	def adder(m: Int, n: Int) = m + n         //> adder: (m: Int, n: Int)Int
+	val add2 = adder(2, _:Int)                //> add2  : Int => Int = <function1>
+	add2(3)                                   //> res5: Int = 5
+	
+	// Curried functions
+	def multiply(m: Int)(n: Int): Int = m * n //> multiply: (m: Int)(n: Int)Int
+	multiply(2)(3)                            //> res6: Int = 6
+	val timesTwo = multiply(2) _              //> timesTwo  : Int => Int = <function1>
+	timesTwo(3)                               //> res7: Int = 6
+	
   // Constructor
-  val calc = new Calculator("HP")                 //> calc  : practice.Calculator = practice.Calculator@43a05220
-  calc.color                                      //> res1: String = black
+  val calc = new Calculator("HP")                 //> calc  : practice.Calculator = practice.Calculator@379c6fd2
+  calc.color                                      //> res8: String = black
   
   // Expression
-  val c = new C                                   //> c  : practice.C = practice.C@1324f232
+  val c = new C                                   //> c  : practice.C = practice.C@65bff1b4
   c.minc
-  c.finc                                          //> res2: () => Unit = <function0>
+  c.finc                                          //> res9: () => Unit = <function0>
   
   // Inheritance
-  val circle = new Circle(2)                      //> circle  : practice.Circle = practice.Circle@1478e67f
+  val circle = new Circle(2)                      //> circle  : practice.Circle = practice.Circle@62478c68
 }
